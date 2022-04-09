@@ -10,12 +10,15 @@ ARG APP_UID=1380
 RUN adduser --disabled-password --uid "$APP_UID" --no-create-home --gecos "$APP_USER" --shell /sbin/nologin "$APP_USER"
 
 # Volumes
-ARG CONF_DIR="/bitcoind"
-RUN mkdir "$CONF_DIR" && \
-    chown "$APP_USER":"$APP_USER" "$CONF_DIR"
-VOLUME ["$CONF_DIR"]
+ARG BASE_DIR="/btcd"
+ARG CONF_DIR="/$BASE_DIR/conf"
+ARG DATA_DIR="/$BASE_DIR/data"
+RUN mkdir -p "$CONF_DIR" "$DATA_DIR" && \
+    chown -R "$APP_USER":"$APP_USER" "$BASE_DIR"
+VOLUME ["$CONF_DIR", "$DATA_DIR"]
 
 USER "$APP_USER"
-WORKDIR "$CONF_DIR"
-ENV PARAMETERS="--config=config.json"
-ENTRYPOINT bitcoind $PARAMETERS
+WORKDIR "$BASE_DIR"
+ENV CONF_DIR="$CONF_DIR" \
+    DATA_DIR="$DATA_DIR"
+ENTRYPOINT btcd --conf="$CONF_DIR/btcd.conf" --datadir="$DATA_DIR"
