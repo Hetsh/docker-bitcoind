@@ -1,5 +1,5 @@
 FROM amd64/alpine:20220328
-RUN echo "http://dl-5.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories && \
+RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
     apk update && \
     apk add --no-cache \
         btcd=0.22.0_beta-r1
