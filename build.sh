@@ -19,7 +19,7 @@ if ! docker version &> /dev/null; then
 	exit -1
 fi
 
-IMG_NAME="hetsh/bitcoind"
+IMG_NAME="hetsh/btcd"
 case "${1-}" in
 	# Build and test with default configuration
 	"--test")
