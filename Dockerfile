@@ -1,8 +1,8 @@
-FROM amd64/alpine:20220328
-RUN echo "https://dl-cdn.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories && \
-    apk update && \
+FROM amd64/alpine:20220715
+RUN apk update && \
     apk add --no-cache \
-        btcd=0.22.0_beta-r1
+        bitcoin=23.0-r3 && \
+    rm /etc/bitcoin.conf
 
 # App user
 ARG APP_USER="bitcoind"
@@ -16,12 +16,11 @@ RUN adduser \
     "$APP_USER"
 
 # Volumes
-ARG BASE_DIR="/btcd"
-RUN mkdir "$BASE_DIR" && \
-    chown "$APP_USER":"$APP_USER" "$BASE_DIR"
-VOLUME ["$BASE_DIR"]
+ARG DATA_DIR="/bitcoind"
+RUN mkdir "$DATA_DIR" && \
+    chown "$APP_USER":"$APP_USER" "$DATA_DIR"
+VOLUME ["$DATA_DIR"]
 
 USER "$APP_USER"
-WORKDIR "$BASE_DIR"
-ENV BASE_DIR="$BASE_DIR"
-ENTRYPOINT exec btcd --configfile="$BASE_DIR/btcd.conf" --datadir="$BASE_DIR/data"
+ENV DATA_DIR="$DATA_DIR"
+ENTRYPOINT exec bitcoind --datadir="$DATA_DIR"

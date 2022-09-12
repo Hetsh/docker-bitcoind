@@ -1,7 +1,7 @@
 # Work In Progress
 
-# Bitcoind Daemon
-Super small and easy to set up daemon for Bitocin.
+# Bitcoind
+Super small and easy to set up Bitocin Core Daemon.
 
 ## Running the server
 ```bash
