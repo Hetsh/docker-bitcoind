@@ -1,7 +1,7 @@
 FROM amd64/alpine:20221110
 RUN apk update && \
     apk add --no-cache \
-        bitcoin=23.0-r3 && \
+        bitcoin=23.0-r4 && \
     rm /etc/bitcoin.conf
 
 # App user
