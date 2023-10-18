@@ -17,18 +17,17 @@ docker stop bitcoind
 ```bash
 MP="/path/to/storage"
 mkdir -p "$MP"
-chown -R 1378:1378 "$MP"
+chown -R 1380:1380 "$MP"
 ```
-`1378` is the numerical id of the user running the server (see Dockerfile).
+`1380` is the numerical id of the user running the server (see Dockerfile).
 Start the server with the additional mount flag:
 ```bash
 docker run --mount type=bind,source=/path/to/storage,target=/bitcoind ...
 ```
 
 ## Configuration
-The client can be configured via config file.
-[This Website](https://bitcoind.com/wizard) helps you generate one.
-Just place the `config.json` into the storage directory and you are good to go.
+The node can be configured via config file (see [bitcoin-conf.md](https://github.com/bitcoin/bitcoin/blob/master/doc/bitcoin-conf.md))
+Just place the `settings.json` into the storage directory and you are good to go.
 
 ## Automate startup and shutdown via systemd
 The systemd unit can be found in my GitHub [repository](https://github.com/Hetsh/docker-bitcoind).
