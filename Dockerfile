@@ -1,4 +1,4 @@
-FROM amd64/alpine:20240923
+FROM amd64/alpine:20250108
 RUN apk update && \
     apk add --no-cache \
         bitcoin=27.0-r1 && \
