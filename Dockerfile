@@ -1,8 +1,8 @@
 FROM amd64/alpine:20250108
-ARG LAST_UPGRADE="2025-12-06T10:12:28+01:00"
+ARG LAST_UPGRADE="2025-12-14T10:21:39+01:00"
 RUN apk upgrade && \
     apk add --no-cache \
-        bitcoin=27.0-r4 && \
+        bitcoin=30.0-r0 && \
     rm /etc/bitcoin.conf
 
 # App user
