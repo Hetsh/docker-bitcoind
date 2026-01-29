@@ -1,27 +1,25 @@
-FROM amd64/alpine:20251224
-ARG LAST_UPGRADE="2026-01-24T12:20:07+01:00"
+FROM amd64/alpine:20260127
+ARG LAST_UPGRADE="2026-01-29T11:38:44+01:00"
 RUN apk upgrade && \
-    apk add --no-cache \
-        bitcoin=30.2-r0 && \
-    rm /etc/bitcoin.conf
+	apk add --no-cache \
+		bitcoin=30.2-r0 && \
+	rm /etc/bitcoin.conf
 
 # App user
 ARG APP_USER="bitcoind"
 ARG APP_UID=1380
 RUN adduser \
-    --disabled-password \
-    --uid "$APP_UID" \
-    --no-create-home \
-    --gecos "$APP_USER" \
-    --shell /sbin/nologin \
-    "$APP_USER"
+	--disabled-password \
+	--uid "$APP_UID" \
+	--no-create-home \
+	--gecos "$APP_USER" \
+	--shell /sbin/nologin \
+	"$APP_USER"
 
-# Volumes
+# Data folder
 ARG DATA_DIR="/bitcoind"
 RUN mkdir "$DATA_DIR" && \
-    chown "$APP_USER":"$APP_USER" "$DATA_DIR"
-VOLUME ["$DATA_DIR"]
+	chown "$APP_USER":"$APP_USER" "$DATA_DIR"
 
 USER "$APP_USER"
-ENV DATA_DIR="$DATA_DIR"
-ENTRYPOINT exec bitcoind --datadir="$DATA_DIR"
+ENTRYPOINT ["bitcoind", "--datadir=/bitcoind"]
