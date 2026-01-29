@@ -1,5 +1,5 @@
 FROM amd64/alpine:20260127
-ARG LAST_UPGRADE="2026-01-29T11:38:44+01:00"
+ARG LAST_UPGRADE="2026-01-29T13:01:44+01:00"
 RUN apk upgrade && \
 	apk add --no-cache \
 		bitcoin=30.2-r0 && \
