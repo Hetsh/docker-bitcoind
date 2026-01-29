@@ -3,7 +3,7 @@ Small and easy to set up Bitocin Core Daemon.
 
 ## Running the server
 ```bash
-docker run --detach --name bitcoind hetsh/bitcoind
+docker run --rm --detach --name bitcoind hetsh/bitcoind
 ```
 
 ## Stopping the container

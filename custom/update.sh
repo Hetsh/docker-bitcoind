@@ -3,6 +3,7 @@
 
 # This file will be sourced by scripts/update.sh to customize the update process
 
+
 MAIN_ITEM="bitcoin"
 GIT_VERSION="$(git describe --tags --first-parent --abbrev=0)"
 update_image "amd64/alpine" "\\d{8}" "Alpine Linux"
