@@ -4,7 +4,7 @@
 # This file will be sourced by scripts/update.sh to customize the update process
 
 
-MAIN_ITEM="bitcoin"
+IMG_NAME="hetsh/bitcoind"
 GIT_VERSION="$(git describe --tags --first-parent --abbrev=0)"
-update_image "amd64/alpine" "\\d{8}" "Alpine Linux"
-update_packages_apk "hetsh/bitcoind"
+BASE_IMAGE_VERSION_REGEX="\\d+"
+MAIN_ITEM="bitcoin"
