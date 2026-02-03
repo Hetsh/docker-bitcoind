@@ -6,5 +6,5 @@
 
 IMG_NAME="hetsh/bitcoind"
 GIT_VERSION="$(git describe --tags --first-parent --abbrev=0)"
-BASE_IMAGE_VERSION_REGEX="\\d+"
+BASE_IMAGE_VERSION_REGEX="\\d{8}-\\d+"
 MAIN_ITEM="bitcoin"

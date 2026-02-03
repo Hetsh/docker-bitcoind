@@ -1,6 +1,6 @@
-FROM amd64/alpine:20260127
+FROM hetsh/alpine:20260127-1
 ARG LAST_UPGRADE="2026-01-31T19:28:07+01:00"
-RUN apk upgrade && \
+RUN apk upgrade --no-cache && \
 	apk add --no-cache \
 		bitcoin=30.2-r1 && \
 	rm /etc/bitcoin.conf
