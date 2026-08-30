@@ -1,8 +1,8 @@
-FROM hetsh/alpine:20260805-1
-ARG LAST_UPGRADE="2026-08-23T08:23:52+02:00"
+FROM hetsh/alpine:20260805-2
+ARG LAST_UPGRADE="2026-08-30T11:07:48+02:00"
 RUN apk upgrade --no-cache && \
 	apk add --no-cache \
-		bitcoin=30.2-r2 && \
+		bitcoin=30.2-r3 && \
 	rm /etc/bitcoin.conf
 
 # App user
