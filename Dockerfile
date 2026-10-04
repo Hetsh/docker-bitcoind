@@ -1,5 +1,5 @@
-FROM hetsh/alpine:20260805-6
-ARG LAST_UPGRADE="2026-09-27T14:33:37+02:00"
+FROM hetsh/alpine:20260805-7
+ARG LAST_UPGRADE="2026-10-04T08:08:06+02:00"
 RUN apk upgrade --no-cache && \
 	apk add --no-cache \
 		bitcoin=30.2-r3 && \
